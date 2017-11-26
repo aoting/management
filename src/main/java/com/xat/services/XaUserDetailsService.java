@@ -13,7 +13,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import com.xat.model.XaUserDetails;
+import com.xat.security.model.XaUserDetails;
 
 @Service
 public class XaUserDetailsService implements UserDetailsService {

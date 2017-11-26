@@ -2,7 +2,7 @@ package com.xat.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection="organisations")
 public class Organisation {
 	protected String id;
 	protected String name;

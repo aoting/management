@@ -1,6 +1,8 @@
 package com.xat.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,19 +11,16 @@ public class User {
 	@Id
 	private String id;
 	
+	@NotBlank
+	@Indexed(unique = true)
 	private String username;
 	private String firstName;
 	private String lastName;
+	private boolean active = true;
+	private boolean locked = false;
 	
 	@DBRef
 	private Organisation organisation;
-	
-	public User(String id, String firstName, String lastName, String username) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-	}
 
 	public String getId() {
 		return id;
@@ -61,6 +60,22 @@ public class User {
 
 	public void setOrganisation(Organisation organisation) {
 		this.organisation = organisation;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
 	}
 	
 	

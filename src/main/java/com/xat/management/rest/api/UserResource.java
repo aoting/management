@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,34 @@ public class UserResource {
 		}
     }
 	
+	/**
+	 * Create user
+	 * @param user
+	 * @return
+	 * 
+	 * <code>
+	 * {
+     * "username": "testuser4",
+     * "password": "xat",
+     * "authorities": [
+     *     "ADMIN"
+     * ],
+     * "firstName" : "Gary",
+     * "lastName" : "Neville",
+     * "lastModified": "2017-09-10T13:39:39.718Z",
+     * "organisation" : {"id" : "5a196649bb7eb111714e040c"}
+	 * }
+	 * </code>
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+    User create(@RequestBody User user) {
+		return userService.createUser(user);
+    }
+	
+	/**
+	 * DO NOT USED
+	 * @return
+	 */
 	@RequestMapping("/user")
     String user() {
 		UserDetails userDetails = userDetailsService.loadUserByUsername("xat");

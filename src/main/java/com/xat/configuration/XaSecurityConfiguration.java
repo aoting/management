@@ -43,7 +43,7 @@ public class XaSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.antMatcher("/**")
+    	http.csrf().disable().antMatcher("/**")
     		.authorizeRequests()
     		.antMatchers("/users").hasAnyAuthority("ADMIN")
             .antMatchers("/management").hasAnyAuthority("ADMIN")

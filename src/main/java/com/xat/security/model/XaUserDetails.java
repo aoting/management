@@ -1,4 +1,4 @@
-package com.xat.model;
+package com.xat.security.model;
 
 import java.util.Collection;
 import java.util.List;

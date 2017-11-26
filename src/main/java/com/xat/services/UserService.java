@@ -1,7 +1,10 @@
 package com.xat.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.xat.db.repository.UserRepository;
 import com.xat.model.User;
 
@@ -29,5 +32,14 @@ public class UserService {
 //        return null;
         
         return userRepository.findById(id);
+    }
+    
+    public List<User> getUsersByOrganisationId(String organisationId) {
+    	System.out.println(organisationId);
+    	return userRepository.findByOrganisationId(organisationId);
+    }
+    
+    public User createUser(User user) {
+    	return userRepository.insert(user);
     }
 }
