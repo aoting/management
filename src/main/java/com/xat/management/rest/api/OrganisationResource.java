@@ -33,8 +33,6 @@ public class OrganisationResource {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public void saveOrganisation(@RequestBody Organisation org) {
-		System.out.println("organisation " + org.getId());
-		System.out.println("organisation name: " + org.getName());
 		if (org.getId() != null && !StringUtils.isEmpty(org.getId())) {
 			organisationService.save(org);
 		} else {
