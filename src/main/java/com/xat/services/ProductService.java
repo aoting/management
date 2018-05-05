@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xat.db.repository.ProductRepository;
-import com.xat.model.Organisation;
 import com.xat.model.Product;
 
 @Service
@@ -24,6 +23,10 @@ public class ProductService {
 	
 	public Product create(Product product) {
 		return productRepository.insert(product);
+	}
+	
+	public List<Product> searchByName(String name) {
+		return productRepository.searchByName(name);
 	}
 	
 }
